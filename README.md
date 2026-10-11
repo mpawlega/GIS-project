@@ -1,10 +1,12 @@
 # GIS Project
-Remote sensing data workflow and visualization using Environment Canada satellite data. 
+[Remote sensing data workflow and visualization using Environment Canada satellite data.] 
 
 ## About the Project
-## Python Library Workflow
+## Python Workflow
 ### Corbel Spatial Geospatial Wheels Index
 **GitHub**: [Corbel Spatial Wheels](https://github.com/corbel-spatial/geospatial-wheels-index)
+
+## Blender Simulation
 
 ## Data Citation
 ### OpenTopography Dataset
