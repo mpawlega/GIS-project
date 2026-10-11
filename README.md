@@ -9,6 +9,6 @@ Remote sensing data workflow and visualization using Environment Canada satellit
 **Use License**: Open Government Licence - Canada
 
 ### Copernicus Sentinel 2 Dataset
-### Earth Engine Datasets
+### EarthEngine Datasets
 #### Dynamic World Dataset
 #### Landsat 2 Dataset
