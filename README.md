@@ -23,7 +23,7 @@
 **Dataset Citation**:  European Space Agency. (2026). Copernicus Sentinel-2 data 2026. Retrieved from the Copernicus Data Space Ecosystem Browser. Product ID: S2A_MSIL2A_20260918T191831_N0512_R056_T10UDV_20260919T014720.<br>
 **Use License**:  Copernicus Free, Full, and Open Data Policy. Attribution: "Contains modified Copernicus Sentinel data 2026."
 
-### EarthEngine Datasets
+### Earth Engine Datasets
 #### Dynamic World V1 Dataset
 **Dataset**: [Dynamic World V1](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1#description)<br>
 **Dataset Name**: dynamic_world_20260918_T10UDV.tif<br>
@@ -36,3 +36,9 @@ Contains modified Copernicus Sentinel data [2015-present].
 **Dataset Name**: LC09_048026_20260915.tif<br>
 **Dataset Citation**: Landsat-9 image courtesy of the U.S. Geological Survey (Asset: LC09_048026_20260915).<br>
 **Use License**: Public Domain (U.S. Government Work). Attribution: "Landsat data resides in the public domain and may be used without copyright restriction. Credit courtesy of the U.S. Geological Survey."
+
+#### Harmonized Sentinel-2 MSI Dataset
+**Dataset**: [Harmonized Sentinel-2 MSI](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED#terms-of-use)<br>
+**Dataset Name**: Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A (SR)<br> 
+**Dataset Citation**: European Union/ESA/Copernicus<br> 
+**Use License**: Terms and Conditions of the Copernicus Sentinel Data
