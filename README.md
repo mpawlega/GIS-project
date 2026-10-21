@@ -19,8 +19,8 @@
 ![Elevation Render](./assets/geometry_nodes.png)
 
 ## Future Work
-Additional exploratory work was done to investigate LiDAR and Landsat for the ROI that were not included as part of the main analysis. Future expansions may include the following:
-- Using LiDAR point cloud data to visualize finer-resolution details and expand on the existing Blender visualization. The datasets under LiDAR note the tiles of interest. Altneratively, .LAZ point clouds will be visualized using Potree or Innerscene tools for validation checks.<br>
+Additional exploratory work investigated LiDAR and Landsat in the ROI; these are not included in the main analysis. Future expansions may include the following:
+- Using LiDAR point cloud data to visualize finer-resolution details and expand on the existing Blender visualization. The LiDAR citations note tiles of interest. Alternatively, .LAZ point clouds will be visualized using Potree or Innerscene tools for validation checks.<br>
 - A comprehensive temporal analysis using openEO or similar time-series libraries will be used to expand the current temporal analysis.<br>
 - Understanding imputation and interpolation methods for NoData or bad pixels.<br>
 - Explore additional pixel masking techniques for shadows and illumination angles.<br> 
@@ -52,7 +52,7 @@ Contains modified Copernicus Sentinel data [2015-present].
 **Dataset Citation**: Landsat-9 image courtesy of the U.S. Geological Survey (Asset: LC09_048026_20260915).<br>
 **Use License**: Public Domain (U.S. Government Work). Attribution: "Landsat data resides in the public domain and may be used without copyright restriction. Credit courtesy of the U.S. Geological Survey."
 
-#### LiDAR
+### LiDAR
 **Dataset**: [LidarBC](https://lidar.gov.bc.ca/pages/download-discovery)<br>
 **Dataset Name(s)**: bc_092g005_x1m_utm10_170714.tif
 • bc_092g005_x1m_utm10_170714.tif<br>
