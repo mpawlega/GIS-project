@@ -46,13 +46,14 @@ Contains modified Copernicus Sentinel data [2015-present].
 **Dataset Name**: Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A (SR)<br> 
 **Dataset Citation**: European Union/ESA/Copernicus<br> 
 **Use License**: Terms and Conditions of the Copernicus Sentinel Data
+
 #### Landsat Dataset
 **Dataset**: [USGS Landsat 9 Level 2, Collection 2, Tier 1](https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC09_C02_T1_L2?_gl=1*k8hbmi*_up*MQ..*_ga*MTI0MTQzODAxMS4xNzkxNzUwNzk3*_ga_SM8HXJ53K2*czE3OTE3NTA3OTYkbzEkZzAkdDE3OTE3NTA3OTYkajYwJGwwJGgw#terms-of-use)<br>
 **Dataset Name**: LC09_048026_20260915.tif<br>
 **Dataset Citation**: Landsat-9 image courtesy of the U.S. Geological Survey (Asset: LC09_048026_20260915).<br>
 **Use License**: Public Domain (U.S. Government Work). Attribution: "Landsat data resides in the public domain and may be used without copyright restriction. Credit courtesy of the U.S. Geological Survey."
 
-### LiDAR
+### LiDAR Dataset
 **Dataset**: [LidarBC](https://lidar.gov.bc.ca/pages/download-discovery)<br>
 **Dataset Name(s)**: bc_092g005_x1m_utm10_170714.tif
 - bc_092g005_x1m_utm10_170714.tif<br>
@@ -71,6 +72,7 @@ Contains modified Copernicus Sentinel data [2015-present].
 
 ### OpenTopography Dataset
 **Dataset**: [OpenTopography](https://portal.opentopography.org/result?id=rt1789275687841)<br>
+**Dataset Name**: 
 **Dataset Citation**: Natural Resources Canada (2025).  Medium Resolution Digital Elevation Model of Canada.  Distributed by OpenTopography. https://doi.org/10.5069/G9N8780J. Accessed 2026-09-13<br> 
 **Use License**: Open Government Licence - Canada<br>
 
