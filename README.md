@@ -55,16 +55,16 @@ Contains modified Copernicus Sentinel data [2015-present].
 ### LiDAR
 **Dataset**: [LidarBC](https://lidar.gov.bc.ca/pages/download-discovery)<br>
 **Dataset Name(s)**: bc_092g005_x1m_utm10_170714.tif
-• bc_092g005_x1m_utm10_170714.tif<br>
-• bc_092g006_x1m_utm10_170714.tif<br>
-• bc_092g015_x1m_utm10_170714.tif<br>
-• bc_092g016_x1m_utm10_170714.tif<br>
-• bc_092g025_xl1m_utm10_170713.tif<br>
-• bc_092g026_xl1m_utm10_170713.tif<br>
-• bc_092g035_xl1m_utm10_170713.tif<br>
-• bc_092g036_xl1m_utm10_170713.tif<br>
-• bc_092g045_xl1m_utm10_170713.tif<br>
-• bc_092g046_xl1m_utm10_170713.tif<br>
+- bc_092g005_x1m_utm10_170714.tif<br>
+- bc_092g006_x1m_utm10_170714.tif<br>
+- bc_092g015_x1m_utm10_170714.tif<br>
+- bc_092g016_x1m_utm10_170714.tif<br>
+- bc_092g025_xl1m_utm10_170713.tif<br>
+- bc_092g026_xl1m_utm10_170713.tif<br>
+- bc_092g035_xl1m_utm10_170713.tif<br>
+- bc_092g036_xl1m_utm10_170713.tif<br>
+- bc_092g045_xl1m_utm10_170713.tif<br>
+- bc_092g046_xl1m_utm10_170713.tif<br>
 **Dataset Citation**: Province of British Columbia. (2017). LidarBC Open LiDAR Data Portal: Map Tiles 092G (005, 006, 015, 016, 025, 026, 035, 036, 045, 046) [Data set]. GeoBC. https://lidar.gov.bc.ca/pages/download-discovery<br>
 **Use License**: LidarBC data is published as Open Data under the Open Government Licence – British Columbia (OGL-BC). Contains information licensed under the Open Government Licence – British Columbia.
 
