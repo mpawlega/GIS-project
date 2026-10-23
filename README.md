@@ -21,10 +21,10 @@
 ## Future Work
 Additional exploratory work investigated LiDAR and Landsat in the ROI; these are not included in the main analysis. Future expansions may include the following:
 - Using LiDAR point cloud data to visualize finer-resolution details and expand on the existing Blender visualization. The LiDAR citations note tiles of interest. Alternatively, .LAZ point clouds will be visualized using Potree or Innerscene tools for validation checks.<br>
-- A comprehensive temporal analysis using openEO or similar time-series libraries will be used to expand the current temporal analysis.<br>
+- A comprehensive temporal analysis using openEO or similar time-series libraries will be used to expand the current temporal analysis. Additionally, further exposure to bath processing will be used for workflow optimization.<br>
 - Understanding imputation and interpolation methods for NoData or bad pixels.<br>
 - Explore additional pixel masking techniques for shadows and illumination angles.<br> 
-- Understand correlation between temporal NDVI changes and Landsat temperature fluctuations. 
+- Understand correlation between temporal NDVI, Landsat temperature fluctuations, and flow direction. 
 
 ## Data Citation
 
@@ -55,7 +55,8 @@ Contains modified Copernicus Sentinel data [2015-present].
 
 ### LiDAR Dataset
 **Dataset**: [LidarBC](https://lidar.gov.bc.ca/pages/download-discovery)<br>
-**Dataset Name(s)**: bc_092g005_x1m_utm10_170714.tif
+**Dataset Name(s)**: 
+- bc_092g005_x1m_utm10_170714.tif<br>
 - bc_092g005_x1m_utm10_170714.tif<br>
 - bc_092g006_x1m_utm10_170714.tif<br>
 - bc_092g015_x1m_utm10_170714.tif<br>
