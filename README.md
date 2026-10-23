@@ -73,7 +73,7 @@ Contains modified Copernicus Sentinel data [2015-present].
 
 ### OpenTopography Dataset
 **Dataset**: [OpenTopography](https://portal.opentopography.org/result?id=rt1789275687841)<br>
-**Dataset Name**: 
+**Dataset Name**: CA_MRDEM<br>
 **Dataset Citation**: Natural Resources Canada (2025).  Medium Resolution Digital Elevation Model of Canada.  Distributed by OpenTopography. https://doi.org/10.5069/G9N8780J. Accessed 2026-09-13<br> 
 **Use License**: Open Government Licence - Canada<br>
 
