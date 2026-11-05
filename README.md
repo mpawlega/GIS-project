@@ -9,11 +9,11 @@
 ### Corbel Spatial Geospatial Wheels Index
 **GitHub**: [Corbel Spatial Wheels](https://github.com/corbel-spatial/geospatial-wheels-index)
 ### Earth Engine
-### Data Load, Mask, and Cleaning
+### Data Preparation
 
 ## Python Data Analysis Workflow
-### Initial Statistical Analysis
-### RandomForest and K-means 
+### Statistical Analysis
+### K-means and RandomForest 
 
 ## Blender Simulation
 ![Elevation Render](./assets/geometry_nodes.png)
@@ -24,7 +24,7 @@ Additional exploratory work investigated LiDAR and Landsat in the ROI; these are
 - A comprehensive temporal analysis using openEO or similar time-series libraries will be used to expand the current temporal analysis. Additionally, further exposure to bath processing will be used for workflow optimization.<br>
 - Understanding imputation and interpolation methods for NoData or bad pixels.<br>
 - Explore additional pixel masking techniques for shadows and illumination angles.<br> 
-- Understand correlation between temporal NDVI, Landsat temperature fluctuations, and flow direction. 
+- Understand correlation between temporal NDVI, Landsat temperature fluctuations, and fill sinks. 
 
 ## Data Citation
 
@@ -43,7 +43,7 @@ Contains modified Copernicus Sentinel data [2015-present].
 
 #### Harmonized Sentinel-2 MSI Dataset
 **Dataset**: [Harmonized Sentinel-2 MSI](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED#terms-of-use)<br>
-**Dataset Name**: Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A (SR)<br> 
+**Dataset Name**: Multiple images from Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A (SR), see EE filters and composites in data_cleaning.ipynb\EarthEngine Sentinel-2 & Dynamic World V1\Get Harmonized Sentinel-2 MSI Level-2A (SR).<br> 
 **Dataset Citation**: European Union/ESA/Copernicus<br> 
 **Use License**: Terms and Conditions of the Copernicus Sentinel Data
 
@@ -57,7 +57,6 @@ Contains modified Copernicus Sentinel data [2015-present].
 **Dataset**: [LidarBC](https://lidar.gov.bc.ca/pages/download-discovery)<br>
 **Dataset Name(s)**: 
 - bc_092g005_x1m_utm10_170714.tif<br>
-- bc_092g005_x1m_utm10_170714.tif<br>
 - bc_092g006_x1m_utm10_170714.tif<br>
 - bc_092g015_x1m_utm10_170714.tif<br>
 - bc_092g016_x1m_utm10_170714.tif<br>
@@ -67,7 +66,7 @@ Contains modified Copernicus Sentinel data [2015-present].
 - bc_092g036_xl1m_utm10_170713.tif<br>
 - bc_092g045_xl1m_utm10_170713.tif<br>
 - bc_092g046_xl1m_utm10_170713.tif<br>
-
+- lidar_mosaic.tif<br>
 **Dataset Citation**: Province of British Columbia. (2017). LidarBC Open LiDAR Data Portal: Map Tiles 092G (005, 006, 015, 016, 025, 026, 035, 036, 045, 046) [Data set]. GeoBC. https://lidar.gov.bc.ca/pages/download-discovery<br>
 **Use License**: LidarBC data is published as Open Data under the Open Government Licence – British Columbia (OGL-BC). Contains information licensed under the Open Government Licence – British Columbia.
 
