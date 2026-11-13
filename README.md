@@ -1,74 +1,65 @@
-![Project Banner](./assets/elevation_render.png)
-
 # Remote Sensing Project
-[Remote sensing data workflow and visualization using Environment Canada satellite data.] 
+![Project Banner](./Assets/Edited_Renders/1_raster_set_side_pointcloud.jpg)
+## About the Project 
+This project uses Sentinel-2 L2A composite bands, OpenTopography digital elevation models (DEMs), and Dynamic World V1 land cover labels. The goal was to understand August NDVI changes between 2024 and 2026 using change statistics and machine learning clustering models. Data cleaning and statistical analysis were performed using Python and documented in Jupyter notebooks. Datasets were sourced through Google Earth Engine and OpenTopography as cited under [Citations](#data-citations). Data visualizations were created in Blender 3D to explore alternative visualization methods suited for science communication, marketing, and technological art.
 
-## About the Project
-
-## Python Data Cleaning Workflow
+## Environment Setup and Dependencies:
 ### Corbel Spatial Geospatial Wheels Index
+The wheels index was used as a supplement for missing dependencies after installing GDAL and osgeo libraries with pip. See the source linked.   
 **GitHub**: [Corbel Spatial Wheels](https://github.com/corbel-spatial/geospatial-wheels-index)
-### Earth Engine
-### Data Preparation
 
-## Python Data Analysis Workflow
-### Statistical Analysis
-### K-means and RandomForest 
+### Google Earth Engine
+Harmonized Sentinel-2 L2A products were queried from Google Earth Engine (GEE) for more efficient data cleaning, pixel masking, and data export. This simplified batch processing for composites and reduced the need to clean previously downloaded Copernicus Browser data (i.e. BOA, offsets, etc.). Datasets were SCL-masked prior to export, packaged into GeoTIFF formats and stored in Google Drive. I used GEE to gain exposure to different queries and authentication for batch processing, rather than relying on heavy Copernicus Browser files. See [`earth_engine_data.ipynb`](earth_engine_data.ipynb.ipynb) for Sentinel-2 L2A and Dynamic World V1 queries.
 
-## Blender Simulation
-![Elevation Render](./assets/geometry_nodes.png)
+### Python Libraries 
+- **Geospatial & Remote Sensing**: rasterio, GDAL (via osgeo), pyproj, shapely, affine, earthengine-api (ee)
+- **Data Analysis & Machine Learning**: numpy, pandas, scipy, scikit-learn (sklearn)
+- **Visualization**: matplotlib, seaborn
+- **API & Notebook Utilities**: requests, ipython
+
+## Data Workflow
+### Python Data Preparation and Cleaning (WIP)
+Data saved under **Datasets** in GeoTIFF format were loaded using rasterio to grab band data and metadata to check NoData values and bounds, resolution, and coordinate reference system. Data was masked accordingly for NoData values to NaN. The 10 m Sentinel-2 L2A grid was used as the reference grid system for reprojection, and data were cropped to match the AOI of the DEM. GDAL was used to calculate slope products from the DEM. Each dataset was plotted using matplotlib for validation checks. See [`data_cleaning.ipynb`](data_cleaning.ipynb) for full workflow. 
+
+### Statistical Analysis (WIP)
+
+### K-means and RandomForest (WIP)
+
+## Data Exports for QGIS and Blender Visualizations (WIP)
+Datasets were exported as GeoTIFF and CSV formats for further analysis and visual work. See [`blender_and_band_exports.ipynb`](./blender_and_band_exports.ipynb), note that In **Data Export**, [`blender_inputs.npz`](./Data%20Export/blender_inputs.npz) and [`export_inputs.npz`](./Data%20Export/export_inputs.npz) were created to store and load data from [`data_cleaning.ipynb`](data_cleaning.ipynb), which is a separate notebook to keep data cleaning and exports separate. As a check, the GeoTIFF was loaded into QGIS to validate UTM bounds, pixel values, resolution, and correct band order. The GeoTIFF is stored under [`Data Export/export_bands.tif`](./Data%20Export/export_bands.tif).
+
+Data exports into Blender include position, elevation, slope, and Dynamic World labels as separate columns. Data was plotted as point clouds to mimic the style of LiDAR data as a visual preference. These renders are stylized data visualizations more suited for scientific communication or marketing compared to the analysis plots. Blender geometry nodes were used to unpack data and load points using point cloud geometry nodes, attribute statistics, and colour ramps. The node *Separate Geometry* has an input for selection, where the bounds are the index from the CSV and a frame driver to reveal the points as the timeline plays. The image below (i.e., [`Assets/Edited Renders/geometry_nodes.png`](./Assets/Edited%20Renders/geometry_nodes.png)) shows the workflow for the DEM, using viridis as the cmap, and *z_elev_bld* and the elevation value. The full workflow is stored under [`Assets/GIS_geometry_nodes_workflow_3_set.blend`](./Assets/GIS_geometry_nodes_workflow_3_set.blend).<br>
+
+![Elevation Render](./Assets/geometry_nodes.png)<br>
+
+Several visualizations were created and stored under [`Assets/Edited Renders/`](./Assets/Edited%20Renders/). Of these, my favourite picks are displayed below. Please note the NDVI and slope plots have been exaggerated for visual effect in orthographic views (slope: [0°, 73°], NDVI: [-1, 1], elevation: [0 m, 1492 m]). The exported data has a shared validity mask between all NDVI dates and the DEM, accounting for visual gaps, as imputation methods were not used (yet).<br>  
+
+![Elevation Render](./Assets/Edited_Renders/3_raster_set_orthographic_2.jpg)<br>
+![Elevation Render](./Assets/Edited_Renders/4_raster_set_birds_eye_view.jpg)<br>
 
 ## Future Work
 Additional exploratory work investigated LiDAR and Landsat in the ROI; these are not included in the main analysis. Future expansions may include the following:
-- Using LiDAR point cloud data to visualize finer-resolution details and expand on the existing Blender visualization. The LiDAR citations note tiles of interest. Alternatively, .LAZ point clouds will be visualized using Potree or Innerscene tools for validation checks.<br>
-- A comprehensive temporal analysis using openEO or similar time-series libraries will be used to expand the current temporal analysis. Additionally, further exposure to bath processing will be used for workflow optimization.<br>
-- Understanding imputation and interpolation methods for NoData or bad pixels.<br>
-- Explore additional pixel masking techniques for shadows and illumination angles.<br> 
-- Understand correlation between temporal NDVI, Landsat temperature fluctuations, and fill sinks. 
+- Using LiDAR point cloud data to visualize finer-resolution details and expand on the existing Blender visualization. Alternatively, .LAZ point clouds will be visualized using Potree or Innerscene tools for validation checks.<br>
+- A comprehensive temporal analysis using openEO or similar time-series libraries will be used to expand the current temporal analysis.<br>
+- Understanding imputation and interpolation methods for NoData, bad pixels, shadows, or varying illumination angles.<br>
+- Understand correlation between temporal NDVI, Landsat temperature fluctuations, and fill sinks.<br>
+- Further exposure to batch processing and conversion of Jupyter notebooks to .py for workflow optimization (i.e., [`earth_engine_data.ipynb`](./earth_engine_data.ipynb) and [`blender_and_band_exports.ipynb`](./blender_and_band_exports.ipynb)).<br>
+- Create labelled data visualizations and animations with key statistics for terrain AOI.
 
-## Data Citation
-
-### Copernicus Sentinel 2 Dataset
-**Dataset**: [Copernicus Browser](https://browser.dataspace.copernicus.eu/?zoom=13&lat=50.6407&lng=-128.10591&themeId=DEFAULT-THEME&visualizationUrl=U2FsdGVkX18h%2FcR5Do5UvGinMxbdtN4leg7QI2sHQ4%2BvQTDIZZyhCzuFrMWnNmgdbCq1FT32fkNAE5qb5IVIViayBzIDc7PhCwhZ%2BmdV727dfQYxt3q1ilfJ4kzAGaYD&datasetId=S2_L2A_CDAS&fromTime=2026-09-15T00%3A00%3A00.000Z&toTime=2026-09-15T23%3A59%3A59.999Z&layerId=2_FALSE_COLOR&demSource3D=%22MAPZEN%22&cloudCoverage=30&dateMode=SINGLE&panel=layers)<br>
-**Dataset Citation**:  European Space Agency. (2026). Copernicus Sentinel-2 data 2026. Retrieved from the Copernicus Data Space Ecosystem Browser. Product ID: S2A_MSIL2A_20260918T191831_N0512_R056_T10UDV_20260919T014720.<br>
-**Use License**:  Copernicus Free, Full, and Open Data Policy. Attribution: "Contains modified Copernicus Sentinel data 2026."
-
+## Data Citations
 ### Earth Engine Datasets
 #### Dynamic World V1 Dataset
 **Dataset**: [Dynamic World V1](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1#description)<br>
-**Dataset Name**: dynamic_world_20260918_T10UDV.tif<br>
+**Dataset Name**: dynamic_world_20260807_T10UDV.tif<br>
 **Dataset Citation**: Brown, C.F., Brumby, S.P., Guzder-Williams, B. et al. Dynamic World, Near real-time global 10 m land use land cover mapping. Sci Data 9, 251 (2022). doi:10.1038/s41597-022-01307-4<br>
 **Use License**: This dataset is licensed under CC-BY 4.0 and requires the following attribution: "This dataset is produced for the Dynamic World Project by Google in partnership with National Geographic Society and the World Resources Institute."
 Contains modified Copernicus Sentinel data [2015-present].
 
-#### Harmonized Sentinel-2 MSI Dataset
-**Dataset**: [Harmonized Sentinel-2 MSI](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED#terms-of-use)<br>
-**Dataset Name**: Multiple images from Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A (SR), see EE filters and composites in data_cleaning.ipynb\EarthEngine Sentinel-2 & Dynamic World V1\Get Harmonized Sentinel-2 MSI Level-2A (SR).<br> 
+#### Harmonized Sentinel-2 L2A MSI Dataset
+**Dataset**: [Harmonized Sentinel-2 L2A MSI](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED#terms-of-use)<br>
+**Dataset Name**: Multiple images from Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A (SR), see EE filters in *earth_engine_data.ipynb*.<br> 
 **Dataset Citation**: European Union/ESA/Copernicus<br> 
 **Use License**: Terms and Conditions of the Copernicus Sentinel Data
-
-#### Landsat Dataset
-**Dataset**: [USGS Landsat 9 Level 2, Collection 2, Tier 1](https://developers.google.com/earth-engine/datasets/catalog/LANDSAT_LC09_C02_T1_L2?_gl=1*k8hbmi*_up*MQ..*_ga*MTI0MTQzODAxMS4xNzkxNzUwNzk3*_ga_SM8HXJ53K2*czE3OTE3NTA3OTYkbzEkZzAkdDE3OTE3NTA3OTYkajYwJGwwJGgw#terms-of-use)<br>
-**Dataset Name**: LC09_048026_20260915.tif<br>
-**Dataset Citation**: Landsat-9 image courtesy of the U.S. Geological Survey (Asset: LC09_048026_20260915).<br>
-**Use License**: Public Domain (U.S. Government Work). Attribution: "Landsat data resides in the public domain and may be used without copyright restriction. Credit courtesy of the U.S. Geological Survey."
-
-### LiDAR Dataset
-**Dataset**: [LidarBC](https://lidar.gov.bc.ca/pages/download-discovery)<br>
-**Dataset Name(s)**: 
-- bc_092g005_x1m_utm10_170714.tif<br>
-- bc_092g006_x1m_utm10_170714.tif<br>
-- bc_092g015_x1m_utm10_170714.tif<br>
-- bc_092g016_x1m_utm10_170714.tif<br>
-- bc_092g025_xl1m_utm10_170713.tif<br>
-- bc_092g026_xl1m_utm10_170713.tif<br>
-- bc_092g035_xl1m_utm10_170713.tif<br>
-- bc_092g036_xl1m_utm10_170713.tif<br>
-- bc_092g045_xl1m_utm10_170713.tif<br>
-- bc_092g046_xl1m_utm10_170713.tif<br>
-- lidar_mosaic.tif<br>
-**Dataset Citation**: Province of British Columbia. (2017). LidarBC Open LiDAR Data Portal: Map Tiles 092G (005, 006, 015, 016, 025, 026, 035, 036, 045, 046) [Data set]. GeoBC. https://lidar.gov.bc.ca/pages/download-discovery<br>
-**Use License**: LidarBC data is published as Open Data under the Open Government Licence – British Columbia (OGL-BC). Contains information licensed under the Open Government Licence – British Columbia.
 
 ### OpenTopography Dataset
 **Dataset**: [OpenTopography](https://portal.opentopography.org/result?id=rt1789275687841)<br>
