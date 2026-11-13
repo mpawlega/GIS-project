@@ -1,9 +1,9 @@
 # Remote Sensing Project
-![Project Banner](./Assets/Edited_Renders/3_raster_set_orthographic.jpg)
+![Project Banner](./Assets/Edited_Renders/2_raster_set_side_pointcloud.jpg)
 ## About the Project 
 This project uses Sentinel-2 L2A composite bands, OpenTopography digital elevation models (DEM), and Dynamic World V1 land cover labels. The goal was to understand yearly NDVI changes between 2024 and 2026 using change statistics and machine learning clustering models. Data cleaning and statistical analysis were performed using Python and documented in Jupyter notebooks. Datasets were sourced through Google Earth Engine and OpenTopography as cited under **Citations**. Data visualizations were created in Blender 3D to explore alternative visualization methods suited for science communication, marketing, and technological art.
 
-## Python Data Cleaning Workflow
+## Environment Setup and Dependencies:
 ### Corbel Spatial Geospatial Wheels Index
 The wheels index was used as a supplement for missing dependencies after installing GDAL and osgeo libraries with pip. See source linked.   
 **GitHub**: [Corbel Spatial Wheels](https://github.com/corbel-spatial/geospatial-wheels-index)
@@ -11,15 +11,19 @@ The wheels index was used as a supplement for missing dependencies after install
 ### Google Earth Engine
 Harmonized Sentinel-2 L2A products were queried from Google Earth Engine (GEE) for more efficient data cleaning, pixel masking, and data export. This simplified batch processing for composites and reduced the need to clean previously downloaded Copernicus Browser data (i.e. BOA, offsets, etc.). Datasets were SCL-masked prior to export, packaged into GeoTIFF formats and stored in Google Drive. I used GEE to gain exposure to different queries and authentication for batch processing, rather than relying on heavy Copernicus Browser files. See *earth_engine_data.ipynb* for Sentinel-2 L2A and Dynamic World V1 queries.
 
+### Python Libraries 
+- **Geospatial & Remote Sensing**: rasterio, GDAL (via osgeo), pyproj, shapely, affine, earthengine-api (ee)
+- **Data Analysis & Machine Learning**: numpy, pandas, scipy, scikit-learn (sklearn)
+- **Visualization**: matplotlib, seaborn
+- **API & Notebook Utilities**: requests, ipython
+
 ## Data Workflow
 ### Python Data Preparation and Cleaning (WIP)
 Data saved under **Datasets** in GeoTIFF format were loaded using rasterio to grab band data and metadata to check NoData values and bounds, resolution, and coordinate reference system. Data was masked accordingly for NoData values to NaN. The 10 m Sentinel-2 L2A grid was used as the reference grid system for reprojection, and data were cropped to match the AOI of the DEM. GDAL was used to calculate slope products from the DEM. Each dataset was plotted using matplotlib for validation checks. See *data_cleaning.ipynb* for full workflow. 
 
 ### Statistical Analysis (WIP)
 
-
 ### K-means and RandomForest (WIP)
-
 
 ## Data Exports for QGIS and Blender Visualizations (WIP)
 Datasets were exported as GeoTIFF and CSV formats for further analysis and visual work. See *blender_and_band_exports*, note that under **Data Export**, *"blender_inputs.npz"* and *"export_inputs.npz"* were created to store and load data from *"data_cleaning.ipynb"*, which is a separate notebook to keep data cleaning and exports separate. As a check, the GeoTIFF was loaded into QGIS to validate UTM bounds, pixel values, resolution, and correct band order. The GeoTIFF is stored under **Data Export\"export_bands.tif"**
