@@ -1,32 +1,47 @@
 # Remote Sensing Project
-[Remote sensing data workflow and visualization using Environment Canada satellite data.] 
-
-## About the Project
+![Project Banner](./Assets/Edited_Renders/3_raster_set_orthographic_2.jpg)
+## About the Project 
+This project uses Sentinel-2 L2A composite bands, OpenTopography digital elevation models (DEM), and Dynamic World V1 land cover labels. The goal was to understand yearly NDVI changes between 2024 and 2026 using change statistics and machine learning clustering models. Data cleaning and statistical analysis were performed using Python and documented in Jupyter notebooks. Datasets were sourced through Google Earth Engine and OpenTopography as cited under **Citations**. Data visualizations were created in Blender 3D to explore alternative visualization methods suited for science communication, marketing, and technological art.
 
 ## Python Data Cleaning Workflow
 ### Corbel Spatial Geospatial Wheels Index
+The wheels index was used as a supplement for missing dependencies after installing GDAL and osgeo libraries with pip. See source linked.   
 **GitHub**: [Corbel Spatial Wheels](https://github.com/corbel-spatial/geospatial-wheels-index)
-### Earth Engine
-### Data Preparation
 
-## Python Data Analysis Workflow
-### Statistical Analysis
-### K-means and RandomForest 
+### Google Earth Engine
+Harmonized Sentinel-2 L2A products were queried from Google Earth Engine (GEE) for more efficient data cleaning, pixel masking, and data export. This simplified batch processing for composites and reduced the need to clean previously downloaded Copernicus Browser data (i.e. BOA, offsets, etc.). Datasets were SCL-masked prior to export, packaged into GeoTIFF formats and stored in Google Drive. I used GEE to gain exposure to different queries and authentication for batch processing, rather than relying on heavy Copernicus Browser files. See *earth_engine_data.ipynb* for Sentinel-2 L2A and Dynamic World V1 queries.
 
-## Blender Simulation
+## Data Workflow
+### Python Data Preparation and Cleaning (WIP)
+Data saved under **Datasets** in GeoTIFF format were loaded using rasterio to grab band data and metadata to check NoData values and bounds, resolution, and coordinate reference system. Data was masked accordingly for NoData values to NaN. The 10 m Sentinel-2 L2A grid was used as the reference grid system for reprojection, and data were cropped to match the AOI of the DEM. GDAL was used to calculate slope products from the DEM. Each dataset was plotted using matplotlib for validation checks. See *data_cleaning.ipynb* for full workflow. 
+
+### Statistical Analysis (WIP)
+
+
+### K-means and RandomForest (WIP)
+
+
+## Data Exports for QGIS and Blender Visualizations (WIP)
+Datasets were exported as GeoTIFF and CSV formats for further analysis and visual work. See *blender_and_band_exports*, note that under **Data Export**, *"blender_inputs.npz"* and *"export_inputs.npz"* were created to store and load data from *"data_cleaning.ipynb"*, which is a separate notebook to keep data cleaning and exports separate. As a check, the GeoTIFF was loaded into QGIS to validate UTM bounds, pixel values, resolution, and correct band order. The GeoTIFF is stored under **Data Export\"export_bands.tif"**
+
+Data exports into Blender include position, elevation, slope, and Dynamic World labels as separate columns. Data was plotted as point clouds to mimic the style of LiDAR data as a visual preference. These renders are stylized data visualizations more suited for scientific communication or marketing compared to the analysis plots. Blender geometry nodes were used to unpack data and load points using point cloud geometry nodes, attribute statistics, and colour ramps. The node *Separate Geometry* has an input for selection, where the bounds are the index from the CSV and a frame driver to reveal the points as the timeline plays. The image below (i.e.  **Assets\Edited Renders\"geometry_nodes.png**) shows the workflow for the DEM, using viridis as the cmap, and *z_elev_bled* and the elevation value. The full workflow is stored under **Assets\"GIS_geometry_nodes_workflow_3_set.blend"**. 
 ![Elevation Render](./Assets/geometry_nodes.png)
-![Project Banner](./Assets/Edited_Renders/3_raster_set_orthographic_2.jpg)
+
+Several visualizations were created, stored under **Assets\Edited Renders**. Of these, my favourite picks are displayed below. Please note the NDVI and slope plots have been exaggerated for visual effect in orthographic views (slope: [0°, 73°], NDVI: [-1,1], elevation: [0 m, 1492 m]). The exported data has a shared validity mask between all NDVI dates and the DEM, accounting for visual gaps, as imputation methods were not used (yet).  
+
+![Elevation Render](./Assets/Edited_Renders/3_raster_set_orthographic_2.jpg)
+![Elevation Render](./Assets/Edited_Renders/4_raster_set_birds_eye_view.jpg)
 
 ## Future Work
 Additional exploratory work investigated LiDAR and Landsat in the ROI; these are not included in the main analysis. Future expansions may include the following:
-- Using LiDAR point cloud data to visualize finer-resolution details and expand on the existing Blender visualization. The LiDAR citations note tiles of interest. Alternatively, .LAZ point clouds will be visualized using Potree or Innerscene tools for validation checks.<br>
-- A comprehensive temporal analysis using openEO or similar time-series libraries will be used to expand the current temporal analysis. Additionally, further exposure to bath processing will be used for workflow optimization.<br>
-- Understanding imputation and interpolation methods for NoData or bad pixels.<br>
-- Explore additional pixel masking techniques for shadows and illumination angles.<br> 
-- Understand correlation between temporal NDVI, Landsat temperature fluctuations, and fill sinks. 
+- Using LiDAR point cloud data to visualize finer-resolution details and expand on the existing Blender visualization. Alternatively, .LAZ point clouds will be visualized using Potree or Innerscene tools for validation checks.<br>
+- A comprehensive temporal analysis using openEO or similar time-series libraries will be used to expand the current temporal analysis.<br>
+- Understanding imputation and interpolation methods for NoData, bad pixels, shadows, or varying illumination angles.<br>
+- Understand correlation between temporal NDVI, Landsat temperature fluctuations, and fill sinks.<br>
+- Further exposure to batch processing and conversion of Jupyter notebooks to .py for workflow optimization (i.e. *earth_engine_data.ipynb* and *blender_band_exports.ipynb*).<br>
+- Create labelled data visualizations and animations with key statistics for terrain AOI.
 
 ## Data Citation
-
 ### Earth Engine Datasets
 #### Dynamic World V1 Dataset
 **Dataset**: [Dynamic World V1](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1#description)<br>
