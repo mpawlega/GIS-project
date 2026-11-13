@@ -1,5 +1,5 @@
 # Remote Sensing Project
-![Project Banner](./Assets/Edited_Renders/3_raster_set_orthographic_2.jpg)
+![Project Banner](./Assets/Edited_Renders/3_raster_set_orthographic.jpg)
 ## About the Project 
 This project uses Sentinel-2 L2A composite bands, OpenTopography digital elevation models (DEM), and Dynamic World V1 land cover labels. The goal was to understand yearly NDVI changes between 2024 and 2026 using change statistics and machine learning clustering models. Data cleaning and statistical analysis were performed using Python and documented in Jupyter notebooks. Datasets were sourced through Google Earth Engine and OpenTopography as cited under **Citations**. Data visualizations were created in Blender 3D to explore alternative visualization methods suited for science communication, marketing, and technological art.
 
