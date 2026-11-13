@@ -1,11 +1,11 @@
 # Remote Sensing Project
-![Project Banner](./Assets/Edited_Renders/2_raster_set_side_pointcloud.jpg)
+![Project Banner](./Assets/Edited_Renders/1_raster_set_side_pointcloud.jpg)
 ## About the Project 
-This project uses Sentinel-2 L2A composite bands, OpenTopography digital elevation models (DEM), and Dynamic World V1 land cover labels. The goal was to understand yearly NDVI changes between 2024 and 2026 using change statistics and machine learning clustering models. Data cleaning and statistical analysis were performed using Python and documented in Jupyter notebooks. Datasets were sourced through Google Earth Engine and OpenTopography as cited under **Citations**. Data visualizations were created in Blender 3D to explore alternative visualization methods suited for science communication, marketing, and technological art.
+This project uses Sentinel-2 L2A composite bands, OpenTopography digital elevation models (DEM), and Dynamic World V1 land cover labels. The goal was to understand August NDVI changes between 2024 and 2026 using change statistics and machine learning clustering models. Data cleaning and statistical analysis were performed using Python and documented in Jupyter notebooks. Datasets were sourced through Google Earth Engine and OpenTopography as cited under **Citations**. Data visualizations were created in Blender 3D to explore alternative visualization methods suited for science communication, marketing, and technological art.
 
 ## Environment Setup and Dependencies:
 ### Corbel Spatial Geospatial Wheels Index
-The wheels index was used as a supplement for missing dependencies after installing GDAL and osgeo libraries with pip. See source linked.   
+The wheels index was used as a supplement for missing dependencies after installing GDAL and osgeo libraries with pip. See the source linked.   
 **GitHub**: [Corbel Spatial Wheels](https://github.com/corbel-spatial/geospatial-wheels-index)
 
 ### Google Earth Engine
@@ -28,7 +28,7 @@ Data saved under **Datasets** in GeoTIFF format were loaded using rasterio to gr
 ## Data Exports for QGIS and Blender Visualizations (WIP)
 Datasets were exported as GeoTIFF and CSV formats for further analysis and visual work. See *blender_and_band_exports*, note that under **Data Export**, *"blender_inputs.npz"* and *"export_inputs.npz"* were created to store and load data from *"data_cleaning.ipynb"*, which is a separate notebook to keep data cleaning and exports separate. As a check, the GeoTIFF was loaded into QGIS to validate UTM bounds, pixel values, resolution, and correct band order. The GeoTIFF is stored under **Data Export\"export_bands.tif"**
 
-Data exports into Blender include position, elevation, slope, and Dynamic World labels as separate columns. Data was plotted as point clouds to mimic the style of LiDAR data as a visual preference. These renders are stylized data visualizations more suited for scientific communication or marketing compared to the analysis plots. Blender geometry nodes were used to unpack data and load points using point cloud geometry nodes, attribute statistics, and colour ramps. The node *Separate Geometry* has an input for selection, where the bounds are the index from the CSV and a frame driver to reveal the points as the timeline plays. The image below (i.e.  **Assets\Edited Renders\"geometry_nodes.png**) shows the workflow for the DEM, using viridis as the cmap, and *z_elev_bled* and the elevation value. The full workflow is stored under **Assets\"GIS_geometry_nodes_workflow_3_set.blend"**. 
+Data exports into Blender include position, elevation, slope, and Dynamic World labels as separate columns. Data was plotted as point clouds to mimic the style of LiDAR data as a visual preference. These renders are stylized data visualizations more suited for scientific communication or marketing compared to the analysis plots. Blender geometry nodes were used to unpack data and load points using point cloud geometry nodes, attribute statistics, and colour ramps. The node *Separate Geometry* has an input for selection, where the bounds are the index from the CSV and a frame driver to reveal the points as the timeline plays. The image below (i.e.  **Assets\Edited Renders\"geometry_nodes.png"**) shows the workflow for the DEM, using viridis as the cmap, and *z_elev_bld* and the elevation value. The full workflow is stored under **Assets/"GIS_geometry_nodes_workflow_3_set.blend"**. 
 ![Elevation Render](./Assets/geometry_nodes.png)
 
 Several visualizations were created, stored under **Assets\Edited Renders**. Of these, my favourite picks are displayed below. Please note the NDVI and slope plots have been exaggerated for visual effect in orthographic views (slope: [0°, 73°], NDVI: [-1,1], elevation: [0 m, 1492 m]). The exported data has a shared validity mask between all NDVI dates and the DEM, accounting for visual gaps, as imputation methods were not used (yet).  
@@ -42,14 +42,14 @@ Additional exploratory work investigated LiDAR and Landsat in the ROI; these are
 - A comprehensive temporal analysis using openEO or similar time-series libraries will be used to expand the current temporal analysis.<br>
 - Understanding imputation and interpolation methods for NoData, bad pixels, shadows, or varying illumination angles.<br>
 - Understand correlation between temporal NDVI, Landsat temperature fluctuations, and fill sinks.<br>
-- Further exposure to batch processing and conversion of Jupyter notebooks to .py for workflow optimization (i.e. *earth_engine_data.ipynb* and *blender_band_exports.ipynb*).<br>
+- Further exposure to batch processing and conversion of Jupyter notebooks to .py for workflow optimization (i.e. *earth_engine_data.ipynb* and *blender_and_band_exports.ipynb*).<br>
 - Create labelled data visualizations and animations with key statistics for terrain AOI.
 
 ## Data Citation
 ### Earth Engine Datasets
 #### Dynamic World V1 Dataset
 **Dataset**: [Dynamic World V1](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1#description)<br>
-**Dataset Name**: dynamic_world_20260918_T10UDV.tif<br>
+**Dataset Name**: dynamic_world_20260807_T10UDV.tif<br>
 **Dataset Citation**: Brown, C.F., Brumby, S.P., Guzder-Williams, B. et al. Dynamic World, Near real-time global 10 m land use land cover mapping. Sci Data 9, 251 (2022). doi:10.1038/s41597-022-01307-4<br>
 **Use License**: This dataset is licensed under CC-BY 4.0 and requires the following attribution: "This dataset is produced for the Dynamic World Project by Google in partnership with National Geographic Society and the World Resources Institute."
 Contains modified Copernicus Sentinel data [2015-present].
