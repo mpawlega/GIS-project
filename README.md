@@ -26,20 +26,16 @@ Data saved under **Datasets** in GeoTIFF format were loaded using rasterio to gr
 ### K-means and RandomForest (WIP)
 
 ## Data Exports for QGIS and Blender Visualizations (WIP)
-Datasets were exported as GeoTIFF and CSV formats for further analysis and visual work. See [`blender_and_band_exports.ipynb`](./blender_and_band_exports.ipynb), note that In **Data Export**, [`blender_inputs.npz`](./Data%20Export/blender_inputs.npz) and [`export_inputs.npz`](./Data%20Export/export_inputs.npz) were created to store and load data from *"data_cleaning.ipynb"*, which is a separate notebook to keep data cleaning and exports separate. As a check, the GeoTIFF was loaded into QGIS to validate UTM bounds, pixel values, resolution, and correct band order. The GeoTIFF is stored under [`Data Export/export_bands.tif`](./Data%20Export/export_bands.tif).
+Datasets were exported as GeoTIFF and CSV formats for further analysis and visual work. See [`blender_and_band_exports.ipynb`](./blender_and_band_exports.ipynb), note that In **Data Export**, [`blender_inputs.npz`](./Data%20Export/blender_inputs.npz) and [`export_inputs.npz`](./Data%20Export/export_inputs.npz) were created to store and load data from [`data_cleaning.ipynb`](data_cleaning.ipynb), which is a separate notebook to keep data cleaning and exports separate. As a check, the GeoTIFF was loaded into QGIS to validate UTM bounds, pixel values, resolution, and correct band order. The GeoTIFF is stored under [`Data Export/export_bands.tif`](./Data%20Export/export_bands.tif).
 
-Data exports into Blender include position, elevation, slope, and Dynamic World labels as separate columns. Data was plotted as point clouds to mimic the style of LiDAR data as a visual preference. These renders are stylized data visualizations more suited for scientific communication or marketing compared to the analysis plots. Blender geometry nodes were used to unpack data and load points using point cloud geometry nodes, attribute statistics, and colour ramps. The node *Separate Geometry* has an input for selection, where the bounds are the index from the CSV and a frame driver to reveal the points as the timeline plays. The image below (i.e., [`Assets/Edited Renders/geometry_nodes.png`](./Assets/Edited%20Renders/geometry_nodes.png)) shows the workflow for the DEM, using viridis as the cmap, and *z_elev_bld* and the elevation value. The full workflow is stored under [`Assets/GIS_geometry_nodes_workflow_3_set.blend`](./Assets/GIS_geometry_nodes_workflow_3_set.blend).
+Data exports into Blender include position, elevation, slope, and Dynamic World labels as separate columns. Data was plotted as point clouds to mimic the style of LiDAR data as a visual preference. These renders are stylized data visualizations more suited for scientific communication or marketing compared to the analysis plots. Blender geometry nodes were used to unpack data and load points using point cloud geometry nodes, attribute statistics, and colour ramps. The node *Separate Geometry* has an input for selection, where the bounds are the index from the CSV and a frame driver to reveal the points as the timeline plays. The image below (i.e., [`Assets/Edited Renders/geometry_nodes.png`](./Assets/Edited%20Renders/geometry_nodes.png)) shows the workflow for the DEM, using viridis as the cmap, and *z_elev_bld* and the elevation value. The full workflow is stored under [`Assets/GIS_geometry_nodes_workflow_3_set.blend`](./Assets/GIS_geometry_nodes_workflow_3_set.blend).<br>
 
-<br>
-![Elevation Render](./Assets/geometry_nodes.png)
-<br>
+![Elevation Render](./Assets/geometry_nodes.png)<br>
 
-Several visualizations were created, stored under **Assets\Edited Renders**. Of these, my favourite picks are displayed below. Please note the NDVI and slope plots have been exaggerated for visual effect in orthographic views (slope: [0°, 73°], NDVI: [-1, 1], elevation: [0 m, 1492 m]). The exported data has a shared validity mask between all NDVI dates and the DEM, accounting for visual gaps, as imputation methods were not used (yet).  
+Several visualizations were created and stored under [`Assets/Edited Renders/`](./Assets/Edited%20Renders/). Of these, my favourite picks are displayed below. Please note the NDVI and slope plots have been exaggerated for visual effect in orthographic views (slope: [0°, 73°], NDVI: [-1, 1], elevation: [0 m, 1492 m]). The exported data has a shared validity mask between all NDVI dates and the DEM, accounting for visual gaps, as imputation methods were not used (yet).<br>  
 
-<br>
-![Elevation Render](./Assets/Edited_Renders/3_raster_set_orthographic_2.jpg)
-![Elevation Render](./Assets/Edited_Renders/4_raster_set_birds_eye_view.jpg)
-<br>
+![Elevation Render](./Assets/Edited_Renders/3_raster_set_orthographic_2.jpg)<br>
+![Elevation Render](./Assets/Edited_Renders/4_raster_set_birds_eye_view.jpg)<br>
 
 ## Future Work
 Additional exploratory work investigated LiDAR and Landsat in the ROI; these are not included in the main analysis. Future expansions may include the following:
