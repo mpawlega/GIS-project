@@ -1,7 +1,7 @@
 # Remote Sensing Project
 ![Project Banner](./Assets/Edited_Renders/1_raster_set_side_pointcloud.jpg)
 ## About the Project 
-This project uses Sentinel-2 L2A composite bands, OpenTopography digital elevation models (DEM), and Dynamic World V1 land cover labels. The goal was to understand August NDVI changes between 2024 and 2026 using change statistics and machine learning clustering models. Data cleaning and statistical analysis were performed using Python and documented in Jupyter notebooks. Datasets were sourced through Google Earth Engine and OpenTopography as cited under **Citations**. Data visualizations were created in Blender 3D to explore alternative visualization methods suited for science communication, marketing, and technological art.
+This project uses Sentinel-2 L2A composite bands, OpenTopography digital elevation models (DEMs), and Dynamic World V1 land cover labels. The goal was to understand August NDVI changes between 2024 and 2026 using change statistics and machine learning clustering models. Data cleaning and statistical analysis were performed using Python and documented in Jupyter notebooks. Datasets were sourced through Google Earth Engine and OpenTopography as cited under [Citations](#data-citations). Data visualizations were created in Blender 3D to explore alternative visualization methods suited for science communication, marketing, and technological art.
 
 ## Environment Setup and Dependencies:
 ### Corbel Spatial Geospatial Wheels Index
@@ -19,22 +19,27 @@ Harmonized Sentinel-2 L2A products were queried from Google Earth Engine (GEE) f
 
 ## Data Workflow
 ### Python Data Preparation and Cleaning (WIP)
-Data saved under **Datasets** in GeoTIFF format were loaded using rasterio to grab band data and metadata to check NoData values and bounds, resolution, and coordinate reference system. Data was masked accordingly for NoData values to NaN. The 10 m Sentinel-2 L2A grid was used as the reference grid system for reprojection, and data were cropped to match the AOI of the DEM. GDAL was used to calculate slope products from the DEM. Each dataset was plotted using matplotlib for validation checks. See *data_cleaning.ipynb* for full workflow. 
+Data saved under **Datasets** in GeoTIFF format were loaded using rasterio to grab band data and metadata to check NoData values and bounds, resolution, and coordinate reference system. Data was masked accordingly for NoData values to NaN. The 10 m Sentinel-2 L2A grid was used as the reference grid system for reprojection, and data were cropped to match the AOI of the DEM. GDAL was used to calculate slope products from the DEM. Each dataset was plotted using matplotlib for validation checks. See [`data_cleaning.ipynb`](./data_cleaning.ipynb) for full workflow. 
 
 ### Statistical Analysis (WIP)
 
 ### K-means and RandomForest (WIP)
 
 ## Data Exports for QGIS and Blender Visualizations (WIP)
-Datasets were exported as GeoTIFF and CSV formats for further analysis and visual work. See *blender_and_band_exports*, note that under **Data Export**, *"blender_inputs.npz"* and *"export_inputs.npz"* were created to store and load data from *"data_cleaning.ipynb"*, which is a separate notebook to keep data cleaning and exports separate. As a check, the GeoTIFF was loaded into QGIS to validate UTM bounds, pixel values, resolution, and correct band order. The GeoTIFF is stored under **Data Export\"export_bands.tif"**
+Datasets were exported as GeoTIFF and CSV formats for further analysis and visual work. See [`blender_and_band_exports/`](./blender_and_band_exports/), note that In **Data Export**, [`blender_inputs.npz`](./blender_and_band_exports/blender_inputs.npz) and [`export_inputs.npz`](./blender_and_band_exports/export_inputs.npz) were created to store and load data from *"data_cleaning.ipynb"*, which is a separate notebook to keep data cleaning and exports separate. As a check, the GeoTIFF was loaded into QGIS to validate UTM bounds, pixel values, resolution, and correct band order. The GeoTIFF is stored under [`Data Export/export_bands.tif`](./Data%20Export/export_bands.tif).
 
-Data exports into Blender include position, elevation, slope, and Dynamic World labels as separate columns. Data was plotted as point clouds to mimic the style of LiDAR data as a visual preference. These renders are stylized data visualizations more suited for scientific communication or marketing compared to the analysis plots. Blender geometry nodes were used to unpack data and load points using point cloud geometry nodes, attribute statistics, and colour ramps. The node *Separate Geometry* has an input for selection, where the bounds are the index from the CSV and a frame driver to reveal the points as the timeline plays. The image below (i.e.  **Assets\Edited Renders\"geometry_nodes.png"**) shows the workflow for the DEM, using viridis as the cmap, and *z_elev_bld* and the elevation value. The full workflow is stored under **Assets/"GIS_geometry_nodes_workflow_3_set.blend"**. 
+Data exports into Blender include position, elevation, slope, and Dynamic World labels as separate columns. Data was plotted as point clouds to mimic the style of LiDAR data as a visual preference. These renders are stylized data visualizations more suited for scientific communication or marketing compared to the analysis plots. Blender geometry nodes were used to unpack data and load points using point cloud geometry nodes, attribute statistics, and colour ramps. The node *Separate Geometry* has an input for selection, where the bounds are the index from the CSV and a frame driver to reveal the points as the timeline plays. The image below (i.e., [`Assets/Edited Renders/geometry_nodes.png`](./Assets/Edited%20Renders/geometry_nodes.png)) shows the workflow for the DEM, using viridis as the cmap, and *z_elev_bld* and the elevation value. The full workflow is stored under [`Assets/GIS_geometry_nodes_workflow_3_set.blend`](./Assets/GIS_geometry_nodes_workflow_3_set.blend).
+
+<br>
 ![Elevation Render](./Assets/geometry_nodes.png)
+<br>
 
-Several visualizations were created, stored under **Assets\Edited Renders**. Of these, my favourite picks are displayed below. Please note the NDVI and slope plots have been exaggerated for visual effect in orthographic views (slope: [0°, 73°], NDVI: [-1,1], elevation: [0 m, 1492 m]). The exported data has a shared validity mask between all NDVI dates and the DEM, accounting for visual gaps, as imputation methods were not used (yet).  
+Several visualizations were created, stored under **Assets\Edited Renders**. Of these, my favourite picks are displayed below. Please note the NDVI and slope plots have been exaggerated for visual effect in orthographic views (slope: [0°, 73°], NDVI: [-1, 1], elevation: [0 m, 1492 m]). The exported data has a shared validity mask between all NDVI dates and the DEM, accounting for visual gaps, as imputation methods were not used (yet).  
 
+<br>
 ![Elevation Render](./Assets/Edited_Renders/3_raster_set_orthographic_2.jpg)
 ![Elevation Render](./Assets/Edited_Renders/4_raster_set_birds_eye_view.jpg)
+<br>
 
 ## Future Work
 Additional exploratory work investigated LiDAR and Landsat in the ROI; these are not included in the main analysis. Future expansions may include the following:
@@ -42,10 +47,10 @@ Additional exploratory work investigated LiDAR and Landsat in the ROI; these are
 - A comprehensive temporal analysis using openEO or similar time-series libraries will be used to expand the current temporal analysis.<br>
 - Understanding imputation and interpolation methods for NoData, bad pixels, shadows, or varying illumination angles.<br>
 - Understand correlation between temporal NDVI, Landsat temperature fluctuations, and fill sinks.<br>
-- Further exposure to batch processing and conversion of Jupyter notebooks to .py for workflow optimization (i.e. *earth_engine_data.ipynb* and *blender_and_band_exports.ipynb*).<br>
+- Further exposure to batch processing and conversion of Jupyter notebooks to .py for workflow optimization (i.e., [`earth_engine_data.ipynb`](./earth_engine_data.ipynb) and [`blender_and_band_exports.ipynb`](./blender_and_band_exports.ipynb)).<br>
 - Create labelled data visualizations and animations with key statistics for terrain AOI.
 
-## Data Citation
+## Data Citations
 ### Earth Engine Datasets
 #### Dynamic World V1 Dataset
 **Dataset**: [Dynamic World V1](https://developers.google.com/earth-engine/datasets/catalog/GOOGLE_DYNAMICWORLD_V1#description)<br>
@@ -54,9 +59,9 @@ Additional exploratory work investigated LiDAR and Landsat in the ROI; these are
 **Use License**: This dataset is licensed under CC-BY 4.0 and requires the following attribution: "This dataset is produced for the Dynamic World Project by Google in partnership with National Geographic Society and the World Resources Institute."
 Contains modified Copernicus Sentinel data [2015-present].
 
-#### Harmonized Sentinel-2 MSI Dataset
-**Dataset**: [Harmonized Sentinel-2 MSI](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED#terms-of-use)<br>
-**Dataset Name**: Multiple images from Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A (SR), see EE filters and composites in data_cleaning.ipynb\EarthEngine Sentinel-2 & Dynamic World V1\Get Harmonized Sentinel-2 MSI Level-2A (SR).<br> 
+#### Harmonized Sentinel-2 L2A MSI Dataset
+**Dataset**: [Harmonized Sentinel-2 L2A MSI](https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S2_SR_HARMONIZED#terms-of-use)<br>
+**Dataset Name**: Multiple images from Harmonized Sentinel-2 MSI: MultiSpectral Instrument, Level-2A (SR), see EE filters in *earth_engine_data.ipynb*.<br> 
 **Dataset Citation**: European Union/ESA/Copernicus<br> 
 **Use License**: Terms and Conditions of the Copernicus Sentinel Data
 
