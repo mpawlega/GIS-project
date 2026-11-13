@@ -26,7 +26,7 @@ Preliminary analysis for NDVI, elevation, and slope statistics was performed und
 
 Unsupervised learning such as K-means clustering was used on both NDVI and DEM rasters. For each NDVI composite year, K-means clusters were detected from a combined feature set to visualize cluster change. K-means was run on a combined feature set, including NDVI, elevation, and slope, to understand any correlation between the DEM and NDVI between years. See [`data_cleaning.ipynb`](data_cleaning.ipynb) sections **K-Means Clustering and Correlation** and **K-Means NDVI Clustering** for more details.
 
-###  RandomForest (WIP)
+###  RandomForest using Dynamic World V1 Labels (WIP)
 
 ### Analysis Results (WIP) 
 
@@ -37,7 +37,7 @@ Data exports into Blender include position, elevation, slope, and Dynamic World 
 
 ![Elevation Render](./Assets/geometry_nodes.png)<br>
 
-Several visualizations were created and stored under [`Assets/Edited Renders/`](./Assets/Edited%20Renders/). Of these, my favourite picks are displayed below. Please note the NDVI and slope plots have been exaggerated for visual effect in orthographic views (slope: [0°, 73°], NDVI: [-1, 1], elevation: [0 m, 1492 m]). The exported data has a shared validity mask between all NDVI dates and the DEM, accounting for visual gaps, as imputation methods were not used (yet).<br>  
+Several visualizations were created and stored under [`Assets/Edited Renders/`](./Assets/Edited%20Renders/). Of these, my favourite picks are displayed below. Please note the NDVI and slope plots have been exaggerated for visual effect in orthographic views (slope: [0°, 73°], NDVI: [-1, 1], elevation: [0 m, 1503 m]). The exported data has a shared validity mask between all NDVI dates and the DEM, accounting for visual gaps, as imputation methods were not used (yet).<br>  
 
 ![Elevation Render](./Assets/Edited_Renders/3_raster_set_orthographic_2.jpg)<br>
 ![Elevation Render](./Assets/Edited_Renders/4_raster_set_birds_eye_view.jpg)<br>
